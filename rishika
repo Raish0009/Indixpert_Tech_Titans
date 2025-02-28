@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+
+
+int main() {
+
+    int ticket_id, is_cancelled = 0; // Assuming ticket_id is the identifier for the ticket
+
+
+
+    printf("Enter ticket ID to cancel: ");
+
+    scanf("%d", &ticket_id);
+
+
+
+    // Check if the entered ticket ID matches a valid ticket (replace with your ticket validation logic)
+
+    if (/* your validation logic for ticket_id */) {
+
+        is_cancelled = 1; // Mark the ticket as cancelled
+
+        printf("Ticket %d cancelled successfully.\n", ticket_id);
+
+    } else {
+
+        printf("Invalid ticket ID.\n");
+
+    }
+
+
+
+    return 0;
+
+}
