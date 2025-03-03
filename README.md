@@ -9,6 +9,7 @@ A Bus Reservation System is a software application that manages the booking and 
 
 - **Raish** 
 - **Neha** 
+- **Rishika** 
 - **Rohit**
 - **Parikshit**
 
