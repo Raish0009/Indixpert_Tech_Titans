@@ -5,7 +5,7 @@ void Bus_number();
 
 void Check_status()
 {
-    int fare[5] = {100, 150, 180, 200, 250};
+    int fare[5] = {100, 150, 180, 210, 250};
     int Bus[5][2] = {{11, 50}, {12, 50}, {13, 50}, {14, 50}, {15, 50}};
     char Source_City[5][10] = {"Jodhpur", "Jaipur", "Bikaner", "Barmer", "Udaipur"};
     char Destination_City[5][10] = {"Bikaner", "Udaipur", "Jaipur", "Jodhpur", "Barmer"};
