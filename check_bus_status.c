@@ -17,8 +17,7 @@ void Check_status()
         printf("\nEnter Bus Number: ");
         if (scanf("%d", &Bus_number) != 1) 
         {
-            while (getchar() != '\n')
-                ;
+            while (getchar() != '\n');
             continue;
         }
 
