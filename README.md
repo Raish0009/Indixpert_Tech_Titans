@@ -7,8 +7,10 @@ A Bus Reservation System is a software application that manages the booking and 
 
 ## Team Members
 
-- **Raish**: Name of the team lead
-- **Neha**: Name of the team member
-- **Rohit**: Name of the team member
-- **Parikshit**: Name of the team member
+- **Raish** 
+- **Neha** 
+- **Rishika** 
+- **Rohit**
+- **Parikshit**
+
 
