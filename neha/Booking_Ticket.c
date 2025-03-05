@@ -2,6 +2,7 @@
 char busNumbers[3][10] = {"1", "2", "3"};
 char routes[3][50] = {"Jodhpur - Jaipur", "Jodhpur - Jaisalmer", "Jodhpur - Bikaner"};
 float fares[3] = {25.5, 30.0, 20.0};
+
 int seats[3][10] = {0};
 void bookTicket()
 {
