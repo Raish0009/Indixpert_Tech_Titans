@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void Check_status();
+
 void Bus_number();
 
 void Check_status()
