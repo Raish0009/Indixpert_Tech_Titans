@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include <string.h>
-
+#include <ctype.h>
 void signUp();
 int signIn();
 int dashboard();
@@ -64,37 +64,62 @@ int dashboard()
     return 0;
 }
 
-void signUp() {
-    if (totalUsers >= 5) {
+void signUp()
+{
+    if (totalUsers >= 5)
+    {
         printf("User limit reached. Cannot register more users.\n");
         return;
     }
-    
+
+    char tempUsername[50], tempPassword[50];
+
     printf("Enter a username: ");
-    fgets(usernames[totalUsers], 30, stdin);
-    usernames[totalUsers][strcspn(usernames[totalUsers], "\n")] = 0;
-    
+    scanf("%s", tempUsername);
+
+    if (!isalpha(tempUsername[0])) 
+    {
+        printf("Invalid username! Username must start with a letter.\n");
+        return;
+    }
+
     printf("Enter a password: ");
-    fgets(passwords[totalUsers], 30, stdin);
-    passwords[totalUsers][strcspn(passwords[totalUsers], "\n")] = 0;
+    scanf("%s", tempPassword);
+
+    if (strlen(tempPassword) < 4) 
+    {
+        printf("Invalid password! Password must be at least 4 characters long.\n");
+        return;
+    }
+
+    if (tempPassword[0] == '-') 
+    {
+        printf("Invalid password! Password cannot start with a minus (-).\n");
+        return;
+    }
     
+    strcpy(usernames[totalUsers], tempUsername);
+    strcpy(passwords[totalUsers], tempPassword);
+
     totalUsers++;
     printf("Sign-up successful! You can now log in.\n");
 }
 
-int signIn() {
+
+int signIn()
+{
     char username[30], password[30];
-    
+
     printf("Enter your username: ");
-    fgets(username, 30, stdin);
-    username[strcspn(username, "\n")] = 0;
-    
+    scanf("%s", username);
+
     printf("Enter your password: ");
-    fgets(password, 30, stdin);
-    password[strcspn(password, "\n")] = 0;
-    
-    for (int i = 0; i < totalUsers; i++) {
-        if (strcmp(username, usernames[i]) == 0 && strcmp(password, passwords[i]) == 0) {
+    scanf("%s", password);
+
+    for (int i = 0; i < totalUsers; i++)
+    {
+        if (strcmp(username, usernames[i]) == 0 && strcmp(password, passwords[i]) == 0)
+        {
             return 1;
         }
     }
