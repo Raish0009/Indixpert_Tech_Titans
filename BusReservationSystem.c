@@ -65,12 +65,11 @@ void signUp()
     }
 
     printf("Enter a username: ");
-    fgets(usernames[totalUsers], 30, stdin);
-    usernames[totalUsers][strcspn(usernames[totalUsers], "\n")] = 0;
+    scanf("%s", usernames[totalUsers]);
+
 
     printf("Enter a password: ");
-    fgets(passwords[totalUsers], 30, stdin);
-    passwords[totalUsers][strcspn(passwords[totalUsers], "\n")] = 0;
+    scanf("%s", passwords[totalUsers]);
 
     totalUsers++;
     printf("Sign-up successful! You can now log in.\n");
@@ -81,12 +80,10 @@ int signIn()
     char username[30], password[30];
 
     printf("Enter your username: ");
-    fgets(username, 30, stdin);
-    username[strcspn(username, "\n")] = 0;
+    scanf("%s", username);
 
     printf("Enter your password: ");
-    fgets(password, 30, stdin);
-    password[strcspn(password, "\n")] = 0;
+    scanf("%s", password);
 
     for (int i = 0; i < totalUsers; i++)
     {
