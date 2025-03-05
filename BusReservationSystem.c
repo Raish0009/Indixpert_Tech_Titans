@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 char busNumbers[3][10] = {"1", "2", "3"};
 char routes[3][50] = {"Jodhpur - Jaipur", "Jodhpur - Jaisalmer", "Jodhpur - Bikaner"};
@@ -56,6 +57,7 @@ int main()
     return 0;
 }
 
+
 void signUp()
 {
     if (totalUsers >= 5)
@@ -64,16 +66,39 @@ void signUp()
         return;
     }
 
-    printf("Enter a username: ");
-    scanf("%s", usernames[totalUsers]);
+    char tempUsername[50], tempPassword[50];
 
+    printf("Enter a username: ");
+    scanf("%s", tempUsername);
+
+    if (!isalpha(tempUsername[0])) 
+    {
+        printf("Invalid username! Username must start with a letter.\n");
+        return;
+    }
 
     printf("Enter a password: ");
-    scanf("%s", passwords[totalUsers]);
+    scanf("%s", tempPassword);
+
+    if (strlen(tempPassword) < 4) 
+    {
+        printf("Invalid password! Password must be at least 4 characters long.\n");
+        return;
+    }
+
+    if (tempPassword[0] == '-') 
+    {
+        printf("Invalid password! Password cannot start with a minus (-).\n");
+        return;
+    }
+    
+    strcpy(usernames[totalUsers], tempUsername);
+    strcpy(passwords[totalUsers], tempPassword);
 
     totalUsers++;
     printf("Sign-up successful! You can now log in.\n");
 }
+
 
 int signIn()
 {
@@ -157,7 +182,6 @@ void bookTicket()
         return;
     }
 
-    // Check available seats
     for (int i = 0; i < 10; i++)
     {
         if (seats[busIndex][i] == 0)
@@ -200,12 +224,27 @@ void cancelTicket()
         return;
     }
 
-    printf("Enter the number of seats to cancel: ");
-    scanf("%d", &seatsToCancel);
-
-    if (seatsToCancel < 1 || seatsToCancel > 10)
+    int bookedSeats = 0;
+    for (int i = 0; i < 10; i++)
     {
-        printf("Invalid number of seats to cancel.\n");
+        if (seats[busIndex][i] == 1)
+        {
+            bookedSeats++;
+        }
+    }
+
+    if (bookedSeats == 0)
+    {
+        printf("No seats have been booked on this bus. You cannot cancel any tickets.\n");
+        return;
+    }
+
+    printf("Enter the number of seats to cancel: ");
+    
+    if (scanf("%d", &seatsToCancel) != 1 || seatsToCancel < 1 || seatsToCancel > bookedSeats)
+    {
+        printf("Invalid number of seats to cancel. You can only cancel up to %d seats.\n", bookedSeats);
+        while (getchar() != '\n'); 
         return;
     }
 
@@ -220,8 +259,10 @@ void cancelTicket()
             canceledSeats++;
         }
     }
-    printf("\nTicket for bus %s\n%d seats has been canceled successfully!\n", busNumbers[busIndex], seatsToCancel);
+    
+    printf("\nTicket for bus %s\n%d seats have been canceled successfully!\n", busNumbers[busIndex], seatsToCancel);
 }
+
 
 void checkBusStatus()
 {
