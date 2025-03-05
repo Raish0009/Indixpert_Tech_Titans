@@ -139,7 +139,7 @@ void bookTicket()
     }
     printf("Enter your choice: ");
     scanf("%d", &busIndex);
-    getchar();
+ 
     busIndex--;
 
     if (busIndex < 0 || busIndex >= 3)
@@ -150,7 +150,6 @@ void bookTicket()
 
     printf("Enter the number of seats you want to book: ");
     scanf("%d", &numSeats);
-    getchar();
 
     if (numSeats < 1 || numSeats > 10)
     {
@@ -192,7 +191,7 @@ void cancelTicket()
     }
     printf("Enter your choice: ");
     scanf("%d", &busIndex);
-    getchar();
+
     busIndex--;
 
     if (busIndex < 0 || busIndex >= 3)
@@ -203,7 +202,6 @@ void cancelTicket()
 
     printf("Enter the number of seats to cancel: ");
     scanf("%d", &seatsToCancel);
-    getchar();
 
     if (seatsToCancel < 1 || seatsToCancel > 10)
     {
@@ -236,7 +234,7 @@ void checkBusStatus()
     }
     printf("Enter the bus number (1-3): ");
     scanf("%d", &busIndex);
-    getchar();
+
 
     if (busIndex < 1 || busIndex > 3)
     {
